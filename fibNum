@@ -1,0 +1,22 @@
+# fibonacci_module.py
+
+def fibonacci(n):
+    """Return a list of Fibonacci numbers up to n terms."""
+    fib_sequence = [0, 1]
+    for i in range(2, n):
+        next_number = fib_sequence[-1] + fib_sequence[-2]
+        fib_sequence.append(next_number)
+    return fib_sequence[:n]
+
+    
+ # main_program.py
+
+# Import the fibonacci function from fibonacci_module
+from fibonacci_module import fibonacci
+
+# Specify the number of terms you want
+n = 10
+
+# Call the fibonacci function and print the result
+fib_numbers = fibonacci(n)
+print(f"Fibonacci sequence with {n} terms: {fib_numbers}")
