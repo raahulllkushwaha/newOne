@@ -1,25 +1,15 @@
-class RomanConverter:
-    def __init__(self):
-        # Define the Roman numeral symbols and their corresponding values
-        self.value_map = [
-            (1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'),
-            (100, 'C'), (90, 'XC'), (50, 'L'), (40, 'XL'),
-            (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')
-        ]
+class irconvert:
+    num_map = [(1000, 'M'), (900, 'CM'), (500, 'D'), (400, 'CD'), (100, 'C'), (90, 'XC'),(50, 'L'), (40, 'XL'), (10, 'X'), (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')]
+    
+    def num2roman(self,num):
+        roman = ''
+        while num > 0:
+            for i, r in self.num_map:
+                while num >= i:
+                    roman += r
+                    num -= i
+        return roman
 
-    def int_to_roman(self, num):
-        # Resultant Roman numeral string
-        roman_numeral = ""
-        
-        # Convert integer to Roman numeral by iterating through value map
-        for value, symbol in self.value_map:
-            while num >= value:
-                roman_numeral += symbol
-                num -= value
-        
-        return roman_numeral
 
-# Example usage
-converter = RomanConverter()
-number = 1994
-print(f"The Roman numeral for {number} is {converter.int_to_roman(number)}")
+num=int(input("Enter any Number :"))
+print("Roman Number is : ",irconvert().num2roman(num))
