@@ -1,0 +1,38 @@
+def print_unique_words(filename):
+    try:
+        # Attempt to open the file
+        with open(filename, 'r') as file:
+            print(f"File '{filename}' opened successfully!")
+            
+            # Initialize an empty set to store unique words
+            unique_words = set()
+            
+            # Read the file line by line
+            for line_num, line in enumerate(file, start=1):
+                print(f"Processing line {line_num}: {line.strip()}")
+                
+                # Split the line into words and process them
+                words = line.split()
+                for word in words:
+                    # Clean and normalize the word before adding to the set
+                    clean_word = word.lower().strip(".,!?;:")
+                    if clean_word:  # Avoid empty strings
+                        unique_words.add(clean_word)
+                        print(f"Added word: '{clean_word}'")
+
+            # Sort the unique words alphabetically
+            sorted_words = sorted(unique_words)
+            print("\nUnique words in alphabetical order:")
+            for word in sorted_words:
+                print(word)
+
+    except FileNotFoundError:
+        print(f"Error: The file '{filename}' was not found. Please check the file name and location.")
+    except PermissionError:
+        print(f"Error: Permission denied while trying to read the file '{filename}'.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+# Example usage
+filename = 'example.txt'  # Replace with your text file name
+print_unique_words(filename)
